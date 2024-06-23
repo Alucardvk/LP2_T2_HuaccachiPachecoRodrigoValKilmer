@@ -11,6 +11,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -35,11 +37,12 @@ public class EmpleadoEntity {
 	@Column(name= "apellido_empleado", length = 45, nullable = false)
 	private String apellidoEmpleado;
 	
-	@Column(name= "fecha_nacimiento",
-			nullable = false,
-			updatable= false)
-	@Temporal(TemporalType.DATE)
-	private Date fechaNacimiento;
+    @Column(name= "fecha_nacimiento",
+            nullable = false,
+            updatable= false)
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date fechaNacimiento;
 	
 	@Column(name= "direccion", length = 45, nullable = false)
 	private String direccion;
