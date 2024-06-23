@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Empleado</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h2>Editar Empleado</h2>
+    <form th:object="${empleado}" th:action="@{/actualizar_empleado}" method="post">
+        <input type="hidden" th:field="*{dniEmpleado}"/>
+
+        <div class="form-group">
+            <label for="nombre">Nombre:</label>
+            <input type="text" class="form-control" id="nombre" th:field="*{nombreEmpleado}" required/>
+        </div>
+
+        <div class="form-group">
+            <label for="apellido">Apellido:</label>
+            <input type="text" class="form-control" id="apellido" th:field="*{apellidoEmpleado}" required/>
+        </div>
+
+        <div class="form-group">
+            <label for="fechaNacimiento">Fecha de Nacimiento:</label>
+            <input type="date" class="form-control" id="fechaNacimiento" th:field="*{fechaNacimiento}" required/>
+        </div>
+
+        <div class="form-group">
+            <label for="direccion">Dirección:</label>
+            <input type="text" class="form-control" id="direccion" th:field="*{direccion}" required/>
+        </div>
+
+        <div class="form-group">
+            <label for="correo">Correo:</label>
+            <input type="email" class="form-control" id="correo" th:field="*{correo}" required/>
+        </div>
+
+        <div class="form-group">
+            <label for="area">Área:</label>
+            <select class="form-control" id="area" th:field="*{areaId}">
+                <option th:each="area : ${listaAreas}" th:value="${area.areaId}" th:text="${area.nombreArea}"></option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Actualizar</button>
+    </form>
+</div>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+</html>

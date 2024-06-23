@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro de Empleado</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Registro de Empleado</h1>
+        <div th:if="${errorMessage}" class="alert-danger" role="alert">
+        	<span th:text="${errorMessage}"></span>
+        </div>
+        <form th:action="@{/registrar_empleado}" th:object="${emp}" method="post">
+            <div class="form-group row">
+                <label for="dni" class="col-sm-2 col-form-label">DNI:</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control form-control-sm" id="dni" th:field="*{dniEmpleado}" name="dni" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="nombre" class="col-sm-2 col-form-label">Nombre:</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="nombre" th:field="*{nombreEmpleado}" name="nombre" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="apellido" class="col-sm-2 col-form-label">Apellido:</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="apellido" th:field="*{apellidoEmpleado}" name="apellido" required>
+                </div>
+            </div>
+			<div class="form-group row">
+			    <label for="fechaNacimiento" class="col-sm-2 col-form-label">Fecha de Nacimiento:</label>
+			    <div class="col-sm-6">
+			        <input type="date" class="form-control" id="fechaNacimiento" th:field="*{fechaNacimiento}" required>
+			    </div>
+			</div>
+            <div class="form-group row">
+                <label for="direccion" class="col-sm-2 col-form-label">Dirección:</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="direccion" th:field="*{direccion}" name="direccion" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="correo" class="col-sm-2 col-form-label">Correo:</label>
+                <div class="col-sm-6">
+                    <input type="email" class="form-control" id="correo" th:field="*{correo}" name="correo" required>
+                </div>
+            </div>
+			<div class="form-group row">
+			    <label for="area" class="col-sm-2 col-form-label">Área:</label>
+			    <div class="col-sm-6">
+			        <select class=" form-control" id="area" th:field="*{areaId}" required>
+			            <option th:each="area : ${listarareas}" th:value="${area.areaId}" th:text="${area.nombreArea}"></option>
+			        </select>
+			    </div>
+			</div>
+            <br>
+            <div class="form-group row">
+                <div class="col-sm-8 offset-sm-2">
+                    <button type="submit" class="btn btn-primary mr-2">Registrar</button>
+                    <a href="/" class="btn btn-secondary">Volver</a>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
